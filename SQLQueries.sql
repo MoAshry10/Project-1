@@ -11,7 +11,7 @@ FROM
       all_years 
 GROUP BY 
       arrival_date_year ,
-	  arrival_date_month
+      arrival_date_month
 ORDER BY 
       arrival_date_year;
 ----------------------------------------------------------------------------------------
@@ -20,14 +20,15 @@ USE
       hotel 
 SELECT 
       arrival_date_year AS year,
-	  meal,
-	  market_segment,
+      meal,
+      market_segment,
       SUM((adr*(stays_in_weekend_nights+stays_in_week_nights+cost))*(1-Discount)) AS total_revenue
 FROM 
       all_years
 GROUP BY 
       arrival_date_year,
-	  meal, market_segment 
+      meal,
+      market_segment 
 ORDER BY 
       total_revenue DESC ;
 ----------------------------------------------------------------------------------------
@@ -50,7 +51,7 @@ USE
       hotel 
 SELECT 
       meal,
-	  market_segment, 
+      market_segment, 
       ROUND(SUM(adr*(stays_in_weekend_nights+stays_in_week_nights)),0) AS total_revenue
 FROM 
       all_years 
@@ -64,16 +65,16 @@ ORDER BY
 USE
       hotel
 SELECT 
-     reserved_room_type AS room_type,
-     COUNT(*) AS total_bookings,
-     SUM((stays_in_week_nights+stays_in_weekend_nights)*adr) AS total_revenue
+      reserved_room_type AS room_type,
+      COUNT(*) AS total_bookings,
+      SUM((stays_in_week_nights+stays_in_weekend_nights)*adr) AS total_revenue
 FROM 
-     all_years
+      all_years
 GROUP BY 
-     reserved_room_type
+      reserved_room_type
 ORDER BY 
-     total_revenue DESC,
-	 room_type ;
+      total_revenue DESC,
+      room_type ;
 
 
 
