@@ -1,3 +1,27 @@
+--View
+CREATE VIEW 
+      all_years AS WITH all_years AS (
+SELECT * FROM [2018]
+UNION 
+SELECT * FROM [2019]
+UNION 
+SELECT * FROM [2020]
+)
+
+SELECT
+	ay.*,
+	ms.Discount,
+      mc.cost
+FROM 
+	all_years ay
+LEFT JOIN 
+      market_segment ms
+ON 
+      ay.market_segment = ms.market_segment
+LEFT JOIN 
+      meal_cost mc
+ON 
+      ay.meal = mc.meal;
 -- Q1: What is the profit percentage for each month across all years?
 USE 
       hotel
